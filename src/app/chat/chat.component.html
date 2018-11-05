@@ -1,0 +1,25 @@
+<div>
+  <div id="chatbox" >
+
+  <div *ngFor="let Mensagem of mensagens">
+      <div class="from-{{Mensagem.autor}}"  *ngIf="Mensagem.autor =='User'">
+        <div class="msg">
+          <p>{{Mensagem.texto}}</p>
+          <!--<img class="chatContainer_image border-image" src="./assets/user_icon.jpg">-->
+        </div>
+      </div>
+      <div class="from-{{Mensagem.autor}}" *ngIf="Mensagem.autor !== 'User'">
+        <div class="msg">
+          <!--img class="chatContainer_image border-image" src="./assets/computer_icon.png">-->
+          <p>{{Mensagem.texto}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div  class="inputContainer">
+      <input type="text" id="usermsg" [(ngModel)]="mensagemUsuario" (keydown)="keyMessage($event)">
+      <input name="submitmsg" type="button" id="submitmsg" value="Enviar"
+        (click)="onFormSubmit($event)"/>
+  </div>
+</div>
